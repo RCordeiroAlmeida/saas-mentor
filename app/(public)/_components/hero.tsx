@@ -14,7 +14,7 @@ export function Hero() {
 
                 <article className="space-y-8 max-w-1/2 text-center md:text-left flex flex-col md:block md:items-start items-center">
                     <Image src={logoColorido} alt="Logo do Mentor colorido"/>
-                    <h1 className="text-4xl lg:text-6xl font-bold  text-gray-800">Bem-vindo a Mentor</h1>
+                    <h1 className="text-3xl lg:text-6xl font-bold  text-gray-800">Bem-vindo a Mentor</h1>
                     <p className=" text-base  lg:text-lg text-gray-600">Atendimento psicológico humanizado, com cuidado real e responsabilidade.</p>
 
                     <Button className=" bg-violet-600 hover:bg-violet-100 hover:text-violet-700 duration-500">
