@@ -29,7 +29,7 @@ export function SideBarDashboard( {children}: {children: React.ReactNode}){
 
     return (
         <div className="flex min-h-screen w-full">
-            <aside className={clsx("flex flex-col border-r bg-gradient-to-b from-violet-600 to-violet-700 transition-all duration-500 h-full shadow-xl", {
+            <aside className={clsx("flex flex-col border-r bg-gradient-to-b from-violet-500 to-violet-600 transition-all duration-500 h-full shadow-xl", {
                 "w-20 p-2": isCollapsed,
                 "w-64 p-5": !isCollapsed,
                 "hidden md:flex md:fixed": true
@@ -127,7 +127,7 @@ export function SideBarDashboard( {children}: {children: React.ReactNode}){
                 "md:ml-20": isCollapsed,
                 "md:ml-64": !isCollapsed
             })}>
-                <header className="md:hidden flex items-center justify-between p-4 border-b-2 border-white/20 z-10 sticky top-0 bg-gradient-to-r from-violet-600 to-violet-700 shadow-lg">
+                <header className="md:hidden flex items-center justify-between p-4 border-b-2 border-white/20 z-10 sticky top-0 bg-gradient-to-r from-violet-500 to-violet-600 shadow-lg">
                     <Sheet>
                         <div className="flex items-center gap-4">
                             <SheetTrigger asChild>
@@ -139,7 +139,7 @@ export function SideBarDashboard( {children}: {children: React.ReactNode}){
                             <h1 className="text-base font-bold text-white tracking-wide">Mentor</h1>
                         </div>
 
-                        <SheetContent className="sm:max-w-xs bg-gradient-to-b from-violet-600 to-violet-700 shadow-lg">
+                        <SheetContent className="sm:max-w-xs bg-gradient-to-b from-violet-500 to-violet-600 shadow-lg">
                             <SheetHeader className="border-b pb-4 mb-4">
                                 <div className="flex items-center justify-center mb-2">
                                     <Image
