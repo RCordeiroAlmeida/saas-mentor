@@ -54,7 +54,7 @@ export function Professionals(){
 
                                 <Link
                                     href="/agendamento/123"
-                                    className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400 text-white text-sm font-medium px-4 py-2 rounded-md transition"
+                                    className="inline-flex items-center gap-2 bg-violet-500 hover:bg-violet-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400 text-white text-sm font-medium px-4 py-2 rounded-md transition"
                                 >
                                     Agendar
                                     <ArrowRight className="w-4 h-4" />
@@ -90,7 +90,7 @@ export function Professionals(){
 
                                 <Link
                                     href="/agendamento/123"
-                                    className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400 text-white text-sm font-medium px-4 py-2 rounded-md transition"
+                                    className="inline-flex items-center gap-2 bg-violet-500 hover:bg-violet-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400 text-white text-sm font-medium px-4 py-2 rounded-md transition"
                                 >
                                     Agendar
                                     <ArrowRight className="w-4 h-4" />
@@ -126,7 +126,7 @@ export function Professionals(){
 
                                 <Link
                                     href="/agendamento/123"
-                                    className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400 text-white text-sm font-medium px-4 py-2 rounded-md transition"
+                                    className="inline-flex items-center gap-2 bg-violet-500 hover:bg-violet-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400 text-white text-sm font-medium px-4 py-2 rounded-md transition"
                                 >
                                     Agendar
                                     <ArrowRight className="w-4 h-4" />
@@ -162,7 +162,7 @@ export function Professionals(){
 
                                 <Link
                                     href="/agendamento/123"
-                                    className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400 text-white text-sm font-medium px-4 py-2 rounded-md transition"
+                                    className="inline-flex items-center gap-2 bg-violet-500 hover:bg-violet-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400 text-white text-sm font-medium px-4 py-2 rounded-md transition"
                                 >
                                     Agendar
                                     <ArrowRight className="w-4 h-4" />

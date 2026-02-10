@@ -3,6 +3,7 @@ import heroImg from "../../../public/hero-image.png"
 
 import logoColorido from "../../../public/logo-colorido.png"
 import Image from "next/image";
+import { ArrowRight, ChevronRight } from "lucide-react";
 
 export function Hero() {
   return (
@@ -17,8 +18,8 @@ export function Hero() {
                     <h1 className="text-3xl lg:text-6xl font-bold  text-gray-800">Bem-vindo a Mentor</h1>
                     <p className=" text-base  lg:text-lg text-gray-600">Atendimento psicológico humanizado, com cuidado real e responsabilidade.</p>
 
-                    <Button className=" bg-violet-600 hover:bg-violet-100 hover:text-violet-700 duration-500">
-                        Agende sua consulta
+                    <Button className=" bg-violet-500 hover:bg-violet-100 hover:text-violet-500 duration-500">
+                        Agende sua consulta 
                     </Button>
                 </article>
 

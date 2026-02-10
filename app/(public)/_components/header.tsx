@@ -32,7 +32,7 @@ export function Header() {
           onClick={() => setIsOpen(false)}
           key={item.href}
           asChild
-          className="text-white bg-violet-600 hover:bg-violet-100 hover:text-violet-700 duration-500"
+          className="text-white bg-violet-500 hover:bg-violet-100 hover:text-violet-500 duration-500"
         >
           <Link href={item.href}>
             {item.icon}
@@ -45,13 +45,13 @@ export function Header() {
         <Link 
           href="/dashboard"
         >
-          <Button className="text-white  hover:bg-white hover:text-violet-700 duration-500 md:flex items-center w-full">
+          <Button className="text-white  hover:bg-white hover:text-violet-500 duration-500 md:flex items-center w-full">
             <LayoutDashboard /> Dashboard
           </Button>
         </Link>
       ) : (
         <Link href="/login">
-          <Button className="text-white  hover:bg-violet-100 hover:text-violet-700 duration-500 md:flex items-center w-full">
+          <Button className="text-white  hover:bg-violet-100 hover:text-violet-500 duration-500 md:flex items-center w-full">
             <LogIn/> Login
           </Button>
         </Link>
@@ -61,7 +61,7 @@ export function Header() {
   );
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-999 bg-violet-700 p-4">
+    <header className="fixed top-0 left-0 right-0 z-999 bg-violet-500 p-4">
       <div className="container mx-auto flex items-center justify-between">
         <Link href="/">
           <div className="flex items-center gap-2">
@@ -85,7 +85,7 @@ export function Header() {
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="md:hidden">
             <Button
-              className="bg-violet-600 hover:bg-white   text-white hover:text-violet-700 duration-400"
+              className="bg-violet-500 hover:bg-white   text-white hover:text-violet-500 duration-400"
               variant="ghost"
               size="icon"
             >
