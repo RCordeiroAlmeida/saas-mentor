@@ -13,17 +13,22 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Brain, Headset, LayoutDashboard, LogIn, Menu } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { handleRegister } from '../_actions/login'
 
 export function Header() {
+  const { data: session, status} = useSession();
 
   const [isOpen, setIsOpen] = useState(false);
-
-  const session = false; // Simulação de sessão
 
   const navItems = [
     { href: "#profissionais", label: "Profissionais", icon: <Brain /> },
     { href: "#contato", label: "Contato", icon: <Headset /> },
   ];
+
+  async function handleLogin() {
+    await handleRegister("github")
+  }
 
   const NavLinks = () => (
     <>
@@ -41,7 +46,9 @@ export function Header() {
         </Button>
       ))}
 
-      {session ? (
+      {status === 'loading' ? (
+        <></>
+      ) : session ? (
         <Link 
           href="/dashboard"
         >
@@ -50,11 +57,12 @@ export function Header() {
           </Button>
         </Link>
       ) : (
-        <Link href="/login">
-          <Button className="text-white  hover:bg-violet-100 hover:text-violet-500 duration-500 md:flex items-center w-full">
-            <LogIn/> Login
-          </Button>
-        </Link>
+        <Button className="text-white  hover:bg-violet-100 hover:text-violet-500 duration-500 md:flex items-center "
+          onClick={(handleLogin)}
+        >
+          <LogIn/> Login
+        </Button>
+        
 
       )}
     </> 
