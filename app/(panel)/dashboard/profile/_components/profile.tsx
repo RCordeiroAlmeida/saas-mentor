@@ -1,11 +1,10 @@
 "use client"
-
-import { useProfileForm, TIME_ZONES } from "./profile-form"
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { useState } from "react"
+import { useProfileForm } from "./profile-form"
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import {
     Form, 
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -23,25 +22,56 @@ import { Button } from '@/components/ui/button'
 
 import Image from "next/image";
 
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+
 import ImgPerfil from '@/public/psicologa.jpg'
+import { Clock, Pencil } from "lucide-react";
+import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
 
 export function ProfileContent(){
 
+    const [selectedHours, setSelectedHours] = useState<string[]>([]);
+
     const form = useProfileForm();
 
-    const onSubmit = (data: any) => {
-        // TODO: replace console.log with API call
-        console.log("submitted profile:", data);
-    };
+    function generateTimeSlots(): string[] {
+        const hours: string[] = [];
+        for(let i=8; i<=20; i++){
+            for(let j=0; j<2; j++){
+                const hour = i.toString().padStart(2, '0');
+                const minute = (j*30).toString().padStart(2, '0');
+
+                hours.push(`${hour}:${minute}`);
+            }
+            
+        }
+
+        return hours;
+    }
+
+    const hours = generateTimeSlots();
+    // console.log(hours);
+
+    function toggleHour(hour: string) {
+        setSelectedHours((prev) => prev.includes(hour) ? prev.filter(h => h !== hour) : [...prev, hour].sort());
+    }
 
     return(
         <div className="mx-auto max-w-5xl px-4 py-12">
     <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form>
             <Card className="shadow-lg overflow-hidden pt-0">
 
                 {/* ── Header image ── */}
-                <div className="relative h-120">
+                <div className="relative h-90 md:h-120">
                     <Image
                         src={ImgPerfil}
                         alt="Foto do usuário"
@@ -49,11 +79,16 @@ export function ProfileContent(){
                         className=" object-cover object-[50%_35%]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                    <div className="absolute left-6 bottom-5 text-white">
-                        <h3 className="text-2xl font-bold drop-shadow">
-                            {form.getValues("name") || "Nome do profissional"}
-                        </h3>
-                        <p className="text-sm opacity-80">Psicólogo(a) clínico(a)</p>
+                    
+                    <div className="flex">
+                        <div className="absolute left-6 bottom-5 text-white">
+                            <h3 className="text-2xl font-bold drop-shadow ">
+                                {form.getValues("name") || "Nome do profissional"}
+                            </h3>
+                            <p className="text-sm opacity-80">Psicólogo(a) clínico(a)</p>
+                        </div>
+
+                        <Pencil className="absolute right-6 bottom-5 h-5 w-5 text-white opacity-80 cursor-pointer hover:opacity-100 transition-opacity" />
                     </div>
                 </div>
 
@@ -69,6 +104,7 @@ export function ProfileContent(){
                                     <FormControl>
                                         <Input {...field} placeholder="Digite o nome completo"/>
                                     </FormControl>
+                                    
                                 </FormItem>
                             )}
                         />
@@ -82,6 +118,7 @@ export function ProfileContent(){
                                     <FormControl>
                                         <Input {...field} placeholder="Digite o endereço"/>
                                     </FormControl>
+                                    
                                 </FormItem>
                             )}
                         />
@@ -95,15 +132,60 @@ export function ProfileContent(){
                                     <FormControl>
                                         <Input {...field} placeholder="Digite o telefone"/>
                                     </FormControl>
+                                    
                                 </FormItem>
                             )}
                         />
+
+                        <div className="space-y-2">
+                            <Label className="font-semibold">
+                                Horarios da clínica
+                            </Label>
+
+                            <Dialog>
+                                <DialogTrigger asChild>
+                                    <Button className="w-full justify-between" variant="outline">
+                                        Gerenciar horários de atendimento
+                                        <Clock className="mr-2" />
+                                    </Button>
+                                </DialogTrigger>
+
+
+                                <DialogContent>
+                                    <DialogHeader>
+                                        <DialogTitle>Horários de atendimento</DialogTitle>
+                                        <DialogDescription>
+                                            Configure os horários disponíveis para atendimento. 
+                                        </DialogDescription>
+                                    </DialogHeader>
+
+                                    <section className="py-4">
+                                        <p className="text-sm text-muted-foreground mb-4">
+                                            Clique nos horários abaixo para alternar entre disponível e indisponível. 
+                                        </p>
+
+                                        <div className="grid grid-cols-5 gap-2">
+                                            {hours.map((hour) => (
+                                                <Button
+                                                    key={hour}
+                                                    variant="outline"
+                                                    className={cn('h-10', selectedHours.includes(hour) && 'border-2 border-violet-500 text-primary')}
+                                                    onClick={() => toggleHour(hour)}
+                                                >
+                                                    {hour}
+                                                </Button>
+                                            ))}
+                                        </div>
+                                    </section>
+                                </DialogContent>
+                            </Dialog>
+                        </div>
 
                         <FormField
                             control={form.control}
                             name="status"
                             render={({ field }) => (
-                                <FormItem>
+                                <FormItem >
                                     <FormLabel className="font-semibold">Status</FormLabel>
                                     <FormControl>
                                         <Select onValueChange={field.onChange} defaultValue={
@@ -121,11 +203,13 @@ export function ProfileContent(){
                                 </FormItem>
                             )}
                         />  
+
+                        
                     </div>
                 </CardContent>
 
                 <CardFooter>
-                    <Button type="submit" className="ml-auto">
+                    <Button type="submit" className="ml-auto bg-violet-500 hover:bg-violet-600  duration-400 text-white">
                         Salvar alterações
                     </Button>
                 </CardFooter>
