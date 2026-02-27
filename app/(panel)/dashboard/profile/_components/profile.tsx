@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react"
-import { useProfileForm } from "./profile-form"
+import { ProfileFormData, useProfileForm } from "./profile-form"
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import {
     Form, 
@@ -79,10 +79,19 @@ export function ProfileContent(){
         );
     }
 
+    async function onSubmit(values: ProfileFormData) {
+        const profileData = {
+            ...values,
+            selectedHours,
+        }
+       
+        console.log(profileData);
+    }
+
     return(
         <div className="mx-auto max-w-5xl px-4 py-12">
     <Form {...form}>
-        <form>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
             <Card className="shadow-lg overflow-hidden pt-0">
 
                 {/* ── Header image ── */}
@@ -223,7 +232,7 @@ export function ProfileContent(){
 
                         <FormField
                             control={form.control}
-                            name="timezone"
+                            name="timeZone"
                             render={({ field }) => (
                                 <FormItem >
                                     <FormLabel className="font-semibold">Fuso Horário</FormLabel>
