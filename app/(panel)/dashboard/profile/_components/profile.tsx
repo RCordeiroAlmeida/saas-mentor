@@ -65,6 +65,20 @@ export function ProfileContent(){
         setSelectedHours((prev) => prev.includes(hour) ? prev.filter(h => h !== hour) : [...prev, hour].sort());
     }
 
+    function timeZones() {
+        return Intl.supportedValuesOf('timeZone').filter((zone) => 
+            zone.startsWith("America/Sao_Paulo") || 
+            zone.startsWith("America/Fortaleza") ||
+            zone.startsWith("America/Recife") || 
+            zone.startsWith("America/Bahia") || 
+            zone.startsWith("America/Belem") ||
+            zone.startsWith("America/Manaus") ||
+            zone.startsWith("America/Cuiaba") ||
+            zone.startsWith("America/Boa_Vista")||
+            zone.startsWith("America/Rio_Branco") 
+        );
+    }
+
     return(
         <div className="mx-auto max-w-5xl px-4 py-12">
     <Form {...form}>
@@ -200,6 +214,30 @@ export function ProfileContent(){
                                             <SelectContent>
                                                 <SelectItem value="active">Ativo (Clínica aberta)</SelectItem>
                                                 <SelectItem value="inactive">Inativo (Clínica fechada)</SelectItem>
+                                            </SelectContent>
+                                        </Select>
+                                    </FormControl>
+                                </FormItem>
+                            )}
+                        />  
+
+                        <FormField
+                            control={form.control}
+                            name="timezone"
+                            render={({ field }) => (
+                                <FormItem >
+                                    <FormLabel className="font-semibold">Fuso Horário</FormLabel>
+                                    <FormControl>
+                                        <Select onValueChange={field.onChange} defaultValue={
+                                            field.value
+                                        }>
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="Selecione o fuso horário da clínica" />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                {timeZones().map((zone) => (
+                                                    <SelectItem key={zone} value={zone}>{zone}</SelectItem>
+                                                ))}
                                             </SelectContent>
                                         </Select>
                                     </FormControl>

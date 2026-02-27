@@ -18,7 +18,7 @@ export function Hero() {
                     <h1 className="text-3xl lg:text-6xl font-bold  text-gray-800">Bem-vindo a Mentor</h1>
                     <p className=" text-base  lg:text-lg text-gray-600">Atendimento psicológico humanizado, com cuidado real e responsabilidade.</p>
 
-                    <Button className=" bg-violet-500 hover:bg-violet-100 hover:text-violet-500 duration-500">
+                    <Button className=" bg-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--accent)] duration-500">
                         Agende sua consulta 
                     </Button>
                 </article>
@@ -29,7 +29,7 @@ export function Hero() {
                         <div className="absolute -inset-6 rounded-2xl bg-purple-300 blur-3xl opacity-75 animate-spin" style={{ animationDuration: '20s' }}></div>
 
                         
-                        <div className="absolute -inset-3 rounded-2xl bg-white/5"></div>
+                        <div className="absolute -inset-3 rounded-2xl bg-[var(--bg-surface)]/5"></div>
 
                         
                         <div className="relative z-10 w-full h-full rounded-2xl overflow-hidden">
@@ -43,7 +43,7 @@ export function Hero() {
 
                         
                         <div className="absolute inset-0 pointer-events-none">
-                            <div className="absolute inset-3 rounded-2xl border-4 border-white/90"></div>
+                            <div className="absolute inset-3 rounded-2xl border-4 border-[var(--text-primary)]/90"></div>
                         </div>
                     </div>
                 </div>

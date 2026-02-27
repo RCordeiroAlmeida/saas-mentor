@@ -36,8 +36,8 @@ export function Professionals(){
                                 fill
                                 className="object-cover object-center"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                            <div className="absolute left-4 bottom-4 text-white">
+                            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-base)]/60 via-[var(--bg-subtle)]/20 to-transparent" />
+                            <div className="absolute left-4 bottom-4 text-[var(--text-primary)]">
                                 <h3 className="text-lg font-semibold leading-tight">Dr. Ana Silva</h3>
                                 <p className="text-sm opacity-90">Psicóloga Clínica</p>
                             </div>
@@ -54,7 +54,7 @@ export function Professionals(){
 
                                 <Link
                                     href="/agendamento/123"
-                                    className="inline-flex items-center gap-2 bg-violet-500 hover:bg-violet-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400 text-white text-sm font-medium px-4 py-2 rounded-md transition"
+                                    className="inline-flex items-center gap-2 bg-[var(--accent)] hover:bg-[var(--accent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-soft)] text-[var(--text-primary)] text-sm font-medium px-4 py-2 rounded-md transition"
                                 >
                                     Agendar
                                     <ArrowRight className="w-4 h-4" />
@@ -72,8 +72,8 @@ export function Professionals(){
                                 fill
                                 className="object-cover object-center"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                            <div className="absolute left-4 bottom-4 text-white">
+                            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-base)]/60 via-[var(--bg-subtle)]/20 to-transparent" />
+                            <div className="absolute left-4 bottom-4 text-[var(--text-primary)]">
                                 <h3 className="text-lg font-semibold leading-tight">Dr. Ana Silva</h3>
                                 <p className="text-sm opacity-90">Psicóloga Clínica</p>
                             </div>
@@ -90,7 +90,7 @@ export function Professionals(){
 
                                 <Link
                                     href="/agendamento/123"
-                                    className="inline-flex items-center gap-2 bg-violet-500 hover:bg-violet-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400 text-white text-sm font-medium px-4 py-2 rounded-md transition"
+                                    className="inline-flex items-center gap-2 bg-[var(--accent)] hover:bg-[var(--accent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-soft)] text-[var(--text-primary)] text-sm font-medium px-4 py-2 rounded-md transition"
                                 >
                                     Agendar
                                     <ArrowRight className="w-4 h-4" />
@@ -108,8 +108,8 @@ export function Professionals(){
                                 fill
                                 className="object-cover object-center"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                            <div className="absolute left-4 bottom-4 text-white">
+                            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-base)]/60 via-[var(--bg-subtle)]/20 to-transparent" />
+                            <div className="absolute left-4 bottom-4 text-[var(--text-primary)]">
                                 <h3 className="text-lg font-semibold leading-tight">Dr. Ana Silva</h3>
                                 <p className="text-sm opacity-90">Psicóloga Clínica</p>
                             </div>
@@ -126,7 +126,7 @@ export function Professionals(){
 
                                 <Link
                                     href="/agendamento/123"
-                                    className="inline-flex items-center gap-2 bg-violet-500 hover:bg-violet-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400 text-white text-sm font-medium px-4 py-2 rounded-md transition"
+                                    className="inline-flex items-center gap-2 bg-[var(--accent)] hover:bg-[var(--accent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-soft)] text-[var(--text-primary)] text-sm font-medium px-4 py-2 rounded-md transition"
                                 >
                                     Agendar
                                     <ArrowRight className="w-4 h-4" />
@@ -144,8 +144,8 @@ export function Professionals(){
                                 fill
                                 className="object-cover object-center"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                            <div className="absolute left-4 bottom-4 text-white">
+                            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-base)]/60 via-[var(--bg-subtle)]/20 to-transparent" />
+                            <div className="absolute left-4 bottom-4 text-[var(--text-primary)]">
                                 <h3 className="text-lg font-semibold leading-tight">Dr. Ana Silva</h3>
                                 <p className="text-sm opacity-90">Psicóloga Clínica</p>
                             </div>
@@ -162,7 +162,7 @@ export function Professionals(){
 
                                 <Link
                                     href="/agendamento/123"
-                                    className="inline-flex items-center gap-2 bg-violet-500 hover:bg-violet-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400 text-white text-sm font-medium px-4 py-2 rounded-md transition"
+                                    className="inline-flex items-center gap-2 bg-[var(--accent)] hover:bg-[var(--accent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-soft)] text-[var(--text-primary)] text-sm font-medium px-4 py-2 rounded-md transition"
                                 >
                                     Agendar
                                     <ArrowRight className="w-4 h-4" />
