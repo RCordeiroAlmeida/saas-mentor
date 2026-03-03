@@ -27,7 +27,7 @@ export function Professionals(){
             </div>
 
             <section className="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                <Card className="p-0 overflow-hidden transform transition-all hover:scale-[1.02] hover:shadow-lg">
+                <Card className="p-0 overflow-hidden transform transition-all hover:scale-[1.02] hover:shadow-lg duration-500">
                     <CardContent className="p-0">
                         <div className="relative h-56">
                             <Image
