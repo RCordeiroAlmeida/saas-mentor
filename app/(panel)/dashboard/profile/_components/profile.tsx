@@ -8,7 +8,6 @@ import {
     FormField,
     FormItem,
     FormLabel,
-    FormMessage
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import {
@@ -35,13 +34,35 @@ import ImgPerfil from '@/public/psicologa.jpg'
 import { Clock, Pencil } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import { Prisma } from "@/generated/prisma/client";
+import { updateProfile } from "../_actions/update-profile"
+import { toast } from "sonner";
+import { formatPhone } from "@/utils/formatPhone"
 
-export function ProfileContent(){
 
-    const [selectedHours, setSelectedHours] = useState<string[]>([]);
+type UserWithSubscription = Prisma.UserGetPayload<{
+    include:{
+        subscription: true;
+    }
+}>;
+    
+interface ProfileContentProps {
+    user: UserWithSubscription;
+}
+
+export function ProfileContent({ user }: ProfileContentProps) {
+
+
+    const [selectedHours, setSelectedHours] = useState<string[]>(user.times ?? []);
     const [dialogIsOpen, setDialogIsOpen] = useState(false);
 
-    const form = useProfileForm();
+    const form = useProfileForm({
+        name: user.name,
+        address: user.address,
+        phone: user.phone,
+        status: user.status,
+        timeZone: user.timeZone
+    });
 
     function generateTimeSlots(): string[] {
         const hours: string[] = [];
@@ -80,27 +101,41 @@ export function ProfileContent(){
     }
 
     async function onSubmit(values: ProfileFormData) {
-        const profileData = {
-            ...values,
-            selectedHours,
+
+        const response = await updateProfile({
+            name: values.name,
+            address: values.address,
+            phone: values.phone,
+            status: values.status === "active" ? true : false,
+            timeZone: values.timeZone,
+            times: selectedHours || [],
+        });
+
+        if(response.error){
+            toast.error(response.error, {
+                richColors: true,
+            });
+            return;
         }
-       
-        console.log(profileData);
+
+        toast.success(response.data);
+
     }
 
     return(
-        <div className="mx-auto max-w-5xl px-4 py-12">
+        <div className="mx-auto max-w-5xl px-4 py-8">
     <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
             <Card className="shadow-lg overflow-hidden pt-0">
 
                 {/* ── Header image ── */}
-                <div className="relative h-90 md:h-120">
+                <div className="relative h-80 md:h-120">
                     <Image
-                        src={ImgPerfil}
+                        src={user.image ? user.image : ImgPerfil}
                         alt="Foto do usuário"
                         fill
-                        className=" object-cover object-[50%_35%]"
+                        quality={100}
+                        className=" object-contain"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                     
@@ -154,7 +189,11 @@ export function ProfileContent(){
                                 <FormItem>
                                     <FormLabel className="font-semibold">Telefone</FormLabel>
                                     <FormControl>
-                                        <Input {...field} placeholder="Digite o telefone"/>
+                                        <Input {...field}
+                                        placeholder="(00) 12345-6789" onChange={ (e) =>{
+                                            const formattedPhone = formatPhone(e.target.value);
+                                            field.onChange(formattedPhone);
+                                        }} />
                                     </FormControl>
                                     
                                 </FormItem>

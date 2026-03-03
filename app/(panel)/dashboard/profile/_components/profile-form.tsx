@@ -16,22 +16,28 @@ const profileSchema = z.object({
     address: z.string().optional(),
     phone: z.string().optional(),
     status: z.string(),
-    timeZone: z.enum(TIME_ZONES, { errorMap: () => ({ message: "Selecione um Fuso horário" }) })
+    timeZone: z.string().min(1, {message: "O fuso horário é obrigatório"})
 })
+
+interface UseProfileFormProps{
+    name: string | null;
+    address: string | null;
+    phone: string | null;
+    status: boolean;
+    timeZone: string | null;
+}
 
 export type ProfileFormData = z.infer<typeof profileSchema>;
 
-export function useProfileForm(props?: UseFormProps<ProfileFormData>){
+export function useProfileForm({name, address, phone, status, timeZone}: UseProfileFormProps){
     return useForm<ProfileFormData>({
         resolver: zodResolver(profileSchema),
         defaultValues:{
-            name: "",
-            address: "",
-            phone: "",
-            status: "ATIVO",
-            timeZone: TIME_ZONES[0],
-            ...(props?.defaultValues ?? {}),
+            name: name || "",
+            address: address || "",
+            phone: phone || "",
+            status: status ? "active" : "inactive",
+            timeZone: timeZone || "",
         },
-        ...props,
     })
 }

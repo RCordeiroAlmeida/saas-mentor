@@ -12,6 +12,7 @@ export default async function Profile() {
 
 
   const user = await getUserData({ userId: session.user?.id })
+  
 //    
 
 
@@ -20,6 +21,6 @@ export default async function Profile() {
   }
 
   return (
-    <ProfileContent />
+    <ProfileContent user={user}/>
   )
 }
