@@ -1,5 +1,42 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Tecnologias Utilizadas
+
+### Frontend
+- **[Next.js](https://nextjs.org/)** 16.1.6 - Framework React com Server Side Rendering
+- **[React](https://react.dev/)** 19.2.3 - Biblioteca de componentes JavaScript
+- **[TypeScript](https://www.typescriptlang.org/)** 5 - Superset tipado de JavaScript
+- **[TailwindCSS](https://tailwindcss.com/)** 4 - Framework CSS utility-first
+- **[Radix UI](https://www.radix-ui.com/)** 1.4.3 - Biblioteca de componentes headless
+- **[shadcn](https://shadcn.dev/)** - Componentes reutilizáveis construídos com Radix UI
+- **[Lucide React](https://lucide.dev/)** 0.563.0 - Ícones SVG
+- **[Sonner](https://sonner.emilkowal.ski/)** 2.0.7 - Notificações toast elegantes
+
+### Formulários e Validação
+- **[React Hook Form](https://react-hook-form.com/)** 5.2.2 - Gerenciamento de formulários eficiente
+- **[@hookform/resolvers](https://github.com/react-hook-form/resolvers)** 5.2.2 - Resolvers para validação
+
+### Backend & Banco de Dados
+- **[Prisma](https://www.prisma.io/)** 7.3.0 - ORM moderno para Node.js
+- **[@prisma/adapter-pg](https://www.prisma.io/)** 7.3.0 - Adapter PostgreSQL para Prisma
+- **[@prisma/extension-accelerate](https://www.prisma.io/accelerate)** 3.0.1 - Extensão de cache e performance
+- **[PostgreSQL](https://www.postgresql.org/)** - Banco de dados relacional
+- **[pg](https://node-postgres.com/)** 8.18.0 - Node.js driver para PostgreSQL
+
+### Autenticação
+- **[NextAuth.js](https://next-auth.js.org/)** 5.0.0-beta.30 - Autenticação para Next.js
+- **[@auth/prisma-adapter](https://authjs.dev/)** 2.11.1 - Adapter Prisma para NextAuth
+
+### Utilidades
+- **[clsx](https://github.com/lukeed/clsx)** 2.1.1 - Utilitário para strings CSS condicionais
+- **[tailwind-merge](https://github.com/dcastil/tailwind-merge)** 3.4.0 - Merge de classes Tailwind
+- **[class-variance-authority](https://cva.style/)** 0.7.1 - TypeScript-first CSS-in-JS
+- **[dotenv](https://github.com/motdotla/dotenv)** 17.2.4 - Carregamento de variáveis de ambiente
+
+### Desenvolvimento
+- **[ESLint](https://eslint.org/)** 9 - Linter JavaScript
+- **[eslint-config-next](https://nextjs.org/docs/basic-features/eslint)** - Configuração eslint para Next.js
+
 ## Getting Started
 
 First, run the development server:
