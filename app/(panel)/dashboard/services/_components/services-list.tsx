@@ -35,7 +35,6 @@ export function ServicesList() {
                         <DialogTrigger asChild>
                             <Button><Plus className="w-4 h-4"/></Button>
                         </DialogTrigger>    
-
                         <DialogContent>
                             <DialogService />
                         </DialogContent>
