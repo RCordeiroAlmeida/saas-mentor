@@ -6,10 +6,10 @@ export default function DashboardLayout({
     children: React.ReactNode;
 }) {
     return (
-        <>
+        <div className="bg-nevoa min-h-screen">
             <SideBarDashboard>
                 {children}
             </SideBarDashboard>
-        </>
+        </div>
     )
 }

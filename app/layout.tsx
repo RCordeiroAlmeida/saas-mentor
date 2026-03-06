@@ -5,6 +5,13 @@ import { Toaster } from "sonner";
 
 import {SessionAuthProvider} from "@/components/session-auth"
 
+import { Cormorant_Garamond } from "next/font/google"
+
+const cormorant = Cormorant_Garamond({ 
+  subsets: ["latin"], 
+  weight: ["300", "400", "600"] 
+})
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
