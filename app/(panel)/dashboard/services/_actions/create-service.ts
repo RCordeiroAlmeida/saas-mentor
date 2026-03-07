@@ -3,6 +3,7 @@
 import { auth } from "@/lib/auth"
 import prisma from "@/lib/prisma"
 import { z } from "zod"
+import { revalidatePath } from "next/cache"
 
 const formSchema = z.object({
     
@@ -40,6 +41,8 @@ export async function createNewService(formData: FormSchema){
                 userId: session?.user?.id
             }
         })
+
+        revalidatePath("/dashboard/services")
 
         return {
             data: newService

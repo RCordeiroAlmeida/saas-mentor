@@ -11,12 +11,25 @@ import { Clock, Pencil, Plus, X } from "lucide-react";
 import { DialogService } from "./dialog-service";
 import { Service } from "@/generated/prisma/client";
 import { formatCurrency } from "@/utils/formatcurrency";
+import { deleteService } from "../_actions/delete-service";
+import { toast } from "sonner";
 
 interface ServicesListProps {
     services: Service[]
 }
 
 export function ServicesList({ services }: ServicesListProps) {
+
+    async function handleDeleteService(serviceId: string){
+        const response = await deleteService({serviceId: serviceId})
+
+        if(response.error){
+            toast(response.error)
+            return
+        }
+
+        toast.success(response.data)
+    }
 
     const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -87,7 +100,7 @@ export function ServicesList({ services }: ServicesListProps) {
                         <h3 className="font-['Cormorant_Garamond'] text-2xl font-normal text-noite mb-2">
                             Nenhum serviço ainda
                         </h3>
-                        <p className="text-sm text-muted font-light mb-6">
+                        <p className="text-sm text-orquidea font-light mb-6">
                             Adicione seus serviços para começar a receber agendamentos.
                         </p>
                         <DialogTrigger asChild>
@@ -143,8 +156,8 @@ export function ServicesList({ services }: ServicesListProps) {
                                     <Button
                                         variant="outline"
                                         size="icon"
-                                        onClick={() => {}}
-                                        className="w-8 h-8 rounded-xl text-sage border-sage hover:bg-sage-light transition-colors"
+                                        onClick={() => handleDeleteService(service.id)}
+                                        className="w-8 h-8 rounded-xl text-red-500 border-red-500 hover:bg-red-100 transition-colors"
                                     >
                                         <X className="w-3.5 h-3.5" />
                                     </Button>
