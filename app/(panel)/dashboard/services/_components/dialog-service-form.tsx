@@ -1,8 +1,8 @@
+"use client"
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
-import { Dialog } from "radix-ui";
-
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "O Nome é obrigatório" }),
@@ -10,8 +10,8 @@ const formSchema = z.object({
   hours: z.string(),
   minutes: z.string(),
 })
-export interface DialogServiceFormProps {
-    initialvalues?:{
+export interface UseDialogServiceFormProps {
+    initialValues?:{
         name: string;
         price: string;
         hours: string;
@@ -21,10 +21,10 @@ export interface DialogServiceFormProps {
 
 export type DialogServiceFormData = z.infer<typeof formSchema>;
 
-export function useDialogServiceForm() {
+export function useDialogServiceForm({ initialValues }: UseDialogServiceFormProps ) {
     return useForm<DialogServiceFormData>({
         resolver: zodResolver(formSchema),
-        defaultValues: {
+        defaultValues: initialValues || {
             name: "",
             price: "",
             hours: "",

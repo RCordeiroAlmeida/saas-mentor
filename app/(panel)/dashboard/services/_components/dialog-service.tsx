@@ -17,13 +17,22 @@ import { Button } from "@/components/ui/button"
 import { convertRealToCents } from "@/utils/convertCurrency"
 import { createNewService } from "../_actions/create-service"
 import { toast } from "sonner"
+import { updateService } from "../_actions/update-service"
 
 interface DialogServiceProps {
     closeModal: () => void;
+    serviceId?: string;
+    initialValues?: {
+        
+        name: string,
+        price: string,
+        hours: string,
+        minutes: string,
+    }
 }
 
-export function DialogService({ closeModal }: DialogServiceProps) {
-    const form = useDialogServiceForm()
+export function DialogService({ closeModal, initialValues, serviceId}: DialogServiceProps) {
+    const form = useDialogServiceForm({initialValues: initialValues})
     const [loading, setLoading] = useState(false)
 
     async function onSubmit(values: DialogServiceFormData) {
@@ -32,6 +41,17 @@ export function DialogService({ closeModal }: DialogServiceProps) {
         const hours = parseInt(values.hours) || 0;
         const minutes = parseInt(values.minutes) || 0;
         const duration = (hours * 60) + minutes;
+
+        if(serviceId){
+            await editServiceById({
+                serviceId: serviceId,
+                name: values.name,
+                priceInCents: priceInCents,
+                duration: duration
+            })
+
+            return;
+        }
 
         const response = await createNewService({
             name: values.name,
@@ -48,6 +68,26 @@ export function DialogService({ closeModal }: DialogServiceProps) {
 
         toast.success("Serviço cadastrado com sucesso");
         handleCloseModal();
+    }
+
+    async function editServiceById({serviceId, name, priceInCents, duration}: {serviceId: string, name: string, priceInCents: number, duration: number}){
+        const response = await updateService({
+            serviceId: serviceId,
+            name: name,
+            price: priceInCents,
+            duration: duration
+        })
+
+        setLoading(false);
+
+        if(response.error){
+            toast.error(response.error)
+            return;
+        }
+
+        toast.success(response.data)
+        handleCloseModal();
+
     }
 
     function handleCloseModal() {
@@ -212,7 +252,7 @@ export function DialogService({ closeModal }: DialogServiceProps) {
                                     <span className="w-3.5 h-3.5 rounded-full border-2 border-white/30 border-t-white animate-spin" />
                                     Cadastrando...
                                 </span>
-                            ) : "Cadastrar"}
+                            ) : serviceId ? "Atualizar serviço" : "Cadastrar"}
                         </Button>
                     </div>
 

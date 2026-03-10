@@ -31,7 +31,17 @@ export function ServicesList({ services }: ServicesListProps) {
         toast.success(response.data)
     }
 
+    async function handleEditService(service: Service){
+        setEditingService(service);
+        setIsDialogOpen(true);
+
+
+    }
+
+
     const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+    const [editingService, setEditingService] = useState<null | Service>(null);
 
     const avgPrice = services.length
         ? services.reduce((sum, s) => sum + s.price, 0) / services.length / 100
@@ -148,7 +158,7 @@ export function ServicesList({ services }: ServicesListProps) {
                                     <Button
                                         variant="outline"
                                         size="icon"
-                                        onClick={() => {}}
+                                        onClick={() => handleEditService(service)}
                                         className="w-8 h-8 rounded-xl text-orquidea border-lavanda hover:bg-lavanda-light hover:border-orquidea transition-colors"
                                     >
                                         <Pencil className="w-3.5 h-3.5" />
@@ -169,8 +179,27 @@ export function ServicesList({ services }: ServicesListProps) {
 
             </section>
 
-            <DialogContent>
-                <DialogService closeModal={() => setIsDialogOpen(false)} />
+            <DialogContent
+                onInteractOutside={(e) => {
+                    e.preventDefault();
+                    setIsDialogOpen(false);
+                    setEditingService(null)
+                }}
+            >
+                <DialogService
+                    closeModal={() => {
+                        setIsDialogOpen(false);
+                        setEditingService(null)
+                    }}
+                    serviceId={editingService ? editingService.id : undefined}
+                    initialValues={editingService ? {
+                        name: editingService.name,
+                        price: (editingService.price /100).toFixed(2).replace(".", ","),
+                        hours: Math.floor(editingService.duration / 60).toString(
+                        ),
+                        minutes: (editingService.duration % 60).toString(),
+                    } : undefined }
+                />
             </DialogContent>
         </Dialog>
     )

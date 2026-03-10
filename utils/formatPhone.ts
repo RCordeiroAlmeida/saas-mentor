@@ -1,3 +1,9 @@
+
+/**
+ * Formata uma string com máscara para telefones 
+ * @param value 
+ * @returns (XX) XXXXX-XXXX
+ */
 export function formatPhone(value: string) {
 
     // Remove tudo que não for número

@@ -6,9 +6,6 @@ import { z } from "zod"
 import { revalidatePath } from "next/cache"
 
 
-
-console.log(auth);
-
 const formSchema = z.object({
     
    serviceId: z.string().min(1, "O id do serviço é obrigatório")
